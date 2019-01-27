@@ -9,6 +9,7 @@ namespace RenderPartialDemo.Models
         public int Id { get; set; }
 
         [Required]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [AllowHtml]

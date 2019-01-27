@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<RenderPartialDemo.Models.Greeting>
 @using RenderPartialDemo.Models
 
-<ul id="greetings-list">
+<ul id="greetings-list" class="list-group">
     @if (Model != null && Model.Any())
     {
         foreach (var item in Model)
@@ -11,7 +11,7 @@
     }
     else
     {
-        <li><em>No greetings found. Say hello to someone!</em></li>
+        <li class="list-group-item list-group-item-warning"><p class="list-group-item-text"><em>No greetings found. Say hello to someone!</em></p></li>
     }
 
 </ul>

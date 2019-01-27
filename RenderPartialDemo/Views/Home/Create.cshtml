@@ -1,0 +1,18 @@
+﻿@model RenderPartialDemo.Models.Greeting
+
+<h2>Say hello</h2>
+
+@using (Ajax.BeginForm("Create", "Home", null, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "greetings-list" }, null))
+{
+    Html.EnableClientValidation();
+
+    @Html.ValidationSummary(true)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FirstName)
+        @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.FirstName)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Say Hello</button>
+}

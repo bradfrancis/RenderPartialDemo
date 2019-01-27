@@ -1,0 +1,31 @@
+﻿@using RenderPartialDemo.Models
+@model IEnumerable<RenderPartialDemo.Models.Greeting>
+@{ ViewBag.Title = "Greetings"; }
+
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.4.0.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script type="text/javascript">
+        $(function () {
+            var hub = $.connection.greetingsHub;
+
+            hub.client.sendGreeting = function (model) {
+                var elem = document.getElementById(model.ElementId);
+
+                if (elem) {
+                    $(elem).replaceWith(model.Html);
+                }
+                else {
+                    $(model.Html).appendTo("#greetings-list");
+                }
+            };
+
+            $.connection.hub.start();
+        });
+    </script>
+}
+
+<h2>Greetings</h2>
+@Html.Partial("_GreetingsList")
+
+@Html.Partial("Create", new Greeting())

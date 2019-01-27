@@ -1,0 +1,19 @@
+﻿@model RenderPartialDemo.Models.Greeting
+
+@if (Model != null)
+{
+    <li id="greeting-@Model.Id">
+        <h4>You said hello to @(Model.FirstName)</h4>
+        @if (!String.IsNullOrEmpty(Model.RawHtml))
+        {
+            <pre>@Model.RawHtml</pre>
+            <p class="h4">Rendered on: @(Model.DateProcessed)</p>
+        }
+        else
+        {
+            <p>Greeting has not yet been rendered</p>
+        }
+    </li>
+}
+
+

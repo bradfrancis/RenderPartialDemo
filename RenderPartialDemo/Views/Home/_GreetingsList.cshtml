@@ -1,0 +1,19 @@
+﻿@model IEnumerable<RenderPartialDemo.Models.Greeting>
+@using RenderPartialDemo.Models
+
+<ul id="greetings-list">
+    @if (Model != null && Model.Any())
+    {
+        foreach (var item in Model)
+        {
+            @Html.Partial("_Greeting", item, new ViewDataDictionary<Greeting>());
+        }
+    }
+    else
+    {
+        <li><em>No greetings found. Say hello to someone!</em></li>
+    }
+
+</ul>
+
+
